@@ -1,0 +1,20 @@
+//set back button functionality
+@Override
+public void onBackPressed() { //if user presses the back button do this
+    if (webview.isFocused() && webview.canGoBack()) { //check if in webview and the user can go back
+        webview.goBack(); //go back in webview
+    } else { //do this if the webview cannot go back any further
+
+        new AlertDialog.Builder(this) //alert the person knowing they are about to close
+                .setTitle("EXIT")
+                .setMessage("Are you sure. You want to close this app?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+}
